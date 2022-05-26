@@ -1,38 +1,8 @@
 $(function(){
 
-    // // 스크롤
-    // $(window).scroll(function(){
-    //     var wd = $(window).width();
-    //     if(wd > 1024){
+    var win = $(window).width();
 
-    //     var now = $(this).scrollTop();
-    //     console.log(now);
-    //     if(now >= 100 && now <=1200){
-    //         $('div.cntWrap:first').addClass('scroll');
-    //     }else if(now >= 1200 && now <= 2800){
-    //         $('div.cntWrap:eq(1)').addClass('scroll');
-    //     }else if(now >= 2800 && now <= 3700){
-    //         $('div.cntWrap:eq(2)').addClass('scroll');
-    //     }else if(now >= 3700 && now <= 4500){
-    //         $('div.cntWrap:eq(3)').addClass('scroll');
-    //     }else if(now >= 4500 && now <= 5000){
-    //         $('div.cntWrap:eq(4)').addClass('scroll');
-    //     }
-    //     else if(now >= 5000 && now < 5100){
-    //         $('div.bnrWrap:eq(0)').addClass('scroll');
-    //     }else if(now >= 5300 && now < 6200){
-    //         $('div.bnrWrap:eq(1)').addClass('scroll');
-    //     }else{
-    //         $('div.ftrWrap').addClass('scroll');
-    //     };
-
-    //     if(now >= 1800 && now <= 2100){
-    //         $('div.cntWrap:eq(1)').addClass('cnton');
-    //     };
-    // };
-        
-    // });
-
+    if(win >= 1025){
 
     $(window).mousemove(function(eve){
         var posX = 0, posY = 0;
@@ -40,7 +10,6 @@ $(function(){
         posY=eve.clientY;
         
         var now = $(this).scrollTop();
-        // console.log(now);
 
         //커서이벤트
         $('.cursor').css({
@@ -62,7 +31,6 @@ $(function(){
             },2000)
         });
 
-
         //쇼박스 mouseunter/mouseleaver
         $('.showBox').mouseenter(function(){
             $('.cursor').css({
@@ -83,13 +51,83 @@ $(function(){
         
     });
 
+    //컨텐츠1 마우스 오버 - 가로 선 효과 1번더
+    $('.cntWrap.cnt01').click(function(){
+        $('.motionbar').animate({
+            width : '100%'
+        },2000)
+    });
+
+}else{
+    $('body').css({
+        overflow : 'inherit'
+    })
+    $('.mainWrap .showBox h5').text('swipe!');
+};
+
+
+
+
     //컨텐츠2 화면이동 
+if(win >= 1025){
+
     $('.cntWrap.cnt01 .down .image').click(function(){
+        if(win >= 1025){
         $('html, body').stop().animate({scrollTop : 2000},500);
         // $('body').css({
         //     overflow : 'inherit'
         // })
+        };
 
+        //원형 1
+        var perscent = 0;
+        $({per:0}).animate({per:93},{
+            duration : 1500,
+            progress : function(){
+                percent = 439 - ( ( 439 * this.per ) / 100 );
+                $('.article.i1 svg circle').css('stroke-dashoffset', percent)
+            }
+        })
+    
+        //원형2
+        $({per:0}).animate({per:90},{
+            duration : 2000,
+            progress : function(){
+                percent = 439 - ( ( 439 * this.per ) / 100 );
+                $('.article.i2 svg circle').css('stroke-dashoffset', percent)
+            }
+        })
+    
+        //원형3
+        $({per:0}).animate({per:75},{
+            duration : 2500,
+            progress : function(){
+                percent = 439 - ( ( 439 * this.per ) / 100 );
+                $('.article.i3 svg circle').css('stroke-dashoffset', percent)
+            }
+        })
+    
+        //컨텐츠2 가로 그래프 progress 
+            var sp = $('.artBtm article .per');
+
+            sp.each(function(a){
+            var ss = $(this).attr('data-num');
+
+            $({percent:0}).animate({percent : ss},{
+                duration : 2000,
+                progress : function(){
+                    var numm = parseInt(this.percent);
+                    $('article .bars .per').eq(a).css({
+                        width : parseInt(this.percent)+'%'
+                    });
+                }
+            });
+        });
+
+    });
+
+    //컨텐츠2 마우스 오버 - 그래프 효과 1번더
+    $('.cntWrap.cnt02').click(function(){
         //원형 1
         var perscent = 0;
         $({per:0}).animate({per:93},{
@@ -119,88 +157,85 @@ $(function(){
         })
     
         //컨텐츠2 가로 그래프 progress 
-            var sp = $('.artBtm article .per');
+        var sp = $('.artBtm article .per');
 
-            sp.each(function(a){
-                var ss = $(this).attr('data-num');
+        sp.each(function(a){
+            var ss = $(this).attr('data-num');
 
-                $({percent:0}).animate({percent : ss},{
-                    duration : 2000,
-                    progress : function(){
-                        var numm = parseInt(this.percent);
-                        $('article .bars .per').eq(a).css({
-                            width : parseInt(this.percent)+'%'
-                        });
-                    }
-                });
-            });
-
-        });
-
-        //컨텐츠2 마우스 오버 - 그래프 효과 1번더
-        $('.cntWrap.cnt02').click(function(){
-            //원형 1
-            var perscent = 0;
-            $({per:0}).animate({per:93},{
-                duration : 1500,
-                progress : function(){
-                    percent = 435 - ( ( 439 * this.per ) / 100 );
-                    $('.article.i1 svg circle').css('stroke-dashoffset', percent)
-                }
-            })
-        
-            //원형2
-            $({per:0}).animate({per:90},{
+            $({percent:0}).animate({percent : ss},{
                 duration : 2000,
                 progress : function(){
-                    percent = 435 - ( ( 439 * this.per ) / 100 );
-                    $('.article.i2 svg circle').css('stroke-dashoffset', percent)
+                    var numm = parseInt(this.percent);
+                    $('article .bars .per').eq(a).css({
+                        width : parseInt(this.percent)+'%'
+                    });
                 }
-            })
-        
-            //원형3
-            $({per:0}).animate({per:75},{
-                duration : 2500,
-                progress : function(){
-                    percent = 435 - ( ( 439 * this.per ) / 100 );
-                    $('.article.i3 svg circle').css('stroke-dashoffset', percent)
-                }
-            })
-        
-            //컨텐츠2 가로 그래프 progress 
-            var sp = $('.artBtm article .per');
-
-            sp.each(function(a){
-                var ss = $(this).attr('data-num');
-
-                $({percent:0}).animate({percent : ss},{
-                    duration : 2000,
-                    progress : function(){
-                        var numm = parseInt(this.percent);
-                        $('article .bars .per').eq(a).css({
-                            width : parseInt(this.percent)+'%'
-                        });
-                    }
-                });
             });
         });
+    });
+    
 
+    //모바일 버전 컨텐츠2 툴 활용능력
+}else{
+    //원형 1
+    $({per:0}).animate({per:93},{
+        duration : 2500,
+        progress : function(){
+            percent = 245 - ( ( 245 * this.per ) / 100 );
+            $('.article.i1 svg circle').css('stroke-dashoffset', percent)
+        }
+    })
 
+    //원형2
+    $({per:0}).animate({per:90},{
+        duration : 2500,
+        progress : function(){
+            percent = 245 - ( ( 245 * this.per ) / 100 );
+            $('.article.i2 svg circle').css('stroke-dashoffset', percent)
+        }
+    })
 
-        $('.cntWrap.cnt02 section article').mouseenter(function(){
-            $('.cntWrap.cnt02 section article .per').removeClass('color');
-            $(this).find('.per').addClass('color');
+    //원형3
+    $({per:0}).animate({per:75},{
+        duration : 2500,
+        progress : function(){
+            percent = 245 - ( ( 245 * this.per ) / 100 );
+            $('.article.i3 svg circle').css('stroke-dashoffset', percent)
+        }
+    })
+
+    //컨텐츠2 가로 그래프 progress 
+        var sp = $('.artBtm article .per');
+
+        sp.each(function(a){
+        var ss = $(this).attr('data-num');
+
+        $({percent:0}).animate({percent : ss},{
+            duration : 2500,
+            progress : function(){
+                var numm = parseInt(this.percent);
+                $('article .bars .per').eq(a).css({
+                    width : parseInt(this.percent)+'%'
+                });
+            }
         });
+    });
+
+};
 
 
 
-
-
+    $('.cntWrap.cnt02 section article').mouseenter(function(){
+        $('.cntWrap.cnt02 section article .per').removeClass('color');
+        $(this).find('.per').addClass('color');
+    });
 
 
     //컨텐츠3 화면이동 
     $('.cntWrap.cnt02 .down .image').click(function(){
+        if(win >= 1025){
         $('html, body').stop().animate({scrollTop : 3000},500);
+        };
         // $('body').css({
         //     overflow : 'inherit'
         // })
@@ -254,18 +289,26 @@ $(function(){
 
     // 풋터이미지(탑버튼 역할)
     $('.ftrWrap .image').click(function(){
+        if(win >= 1025){        
         $('html, body').stop().animate({scrollTop : 0},500);
         $('body').css({
             overflow : 'hidden'
         })
+    }else{
+        $('html, body').stop().animate({scrollTop : 0},500);
+    };
     });
 
     //탑버튼
     $('.ftrWrap .topBtn').click(function(){
+        if(win >= 1025){  
         $('html, body').stop().animate({scrollTop : 0},500);
         $('body').css({
             overflow : 'hidden'
         })
+    }else{
+        $('html, body').stop().animate({scrollTop : 0},500);
+    };
     });
 
 

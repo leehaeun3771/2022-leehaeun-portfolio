@@ -53,6 +53,12 @@ $mt:#{'min(3rem, 120px)'};
     }
 }
 
+@mixin tablet{
+    @media (max-width:1024px) and (min-width:0px){
+        @content;         
+    }
+}
+
 
 html{
     font-size: 3vw;
@@ -86,6 +92,11 @@ body{
         @include grid('pc');
         padding-top: #{'min(11rem, 440px)'};
         padding-bottom: $h;
+        @include mobile{
+            @include grid('mob');
+            padding-top: #{'min(3rem, 120px)'};
+            padding-bottom: $lh;
+        }
         .eventGr{
             h1{
                 font-size: #{'min(18.5em, 185px)'};
@@ -94,6 +105,10 @@ body{
                 text-align: center;
                 text-transform: uppercase;
                 color: black;
+                @include mobile{
+                    font-size: #{'min(7.5em, 75px)'};
+                    line-height: #{'min(1.5rem, 60px)'};
+                }
             }
             .cursor{
                 width: 120px;
@@ -107,6 +122,9 @@ body{
                 transform: translate(-50%,-50%);
                 cursor: none;
                 position: width height 0.5s;
+                @include tablet{
+                    display: none;
+                }
             }
         }
         h4{
@@ -117,15 +135,27 @@ body{
             text-transform: uppercase;
             color: #666;
             letter-spacing: #{'min(0.12rem, 5px)'};
+            @include mobile{
+                font-size: #{'min(1.3em, 13px)'};
+                margin-top: 0px;
+            }
         }
         .bar{
             margin-top: $lh;
+            @include mobile{
+                margin-top: $plh;
+            }
             .image{
                 @include bg;    
                 margin: 0 auto;
                 height: #{'min(4rem, 160px)'};
                 background-image: url('../images/click\ arrow.png');
                 background-size: contain;
+                @include mobile{
+                    height: #{'min(1.5rem, 60px)'};
+                    background-image: url('../images/click\ arrow\ mini.png');
+                    background-size: contain;
+                }
             }
         }
         .showBox{
@@ -134,12 +164,19 @@ body{
             margin: 0 auto;
             height: #{'min(1.5rem, 60px)'};
             margin-top: $plh;
+            @include mobile{
+                height: #{'min(1rem, 40px)'};
+            }
             .base{
                 width: #{'min(1.25rem, 50px)'};
                 height: #{'min(1.25rem, 50px)'};
                 border-radius: 50%;
                 border: 4px solid #ccc;
                 margin: 0 auto;
+                @include mobile{
+                    height: #{'min(0.5rem, 20px)'};
+                    width: #{'min(0.5rem, 20px)'};
+                }
             }
             h5{
                 font-size: $p;
@@ -147,6 +184,9 @@ body{
                 color: #666;
                 line-height: $plh;
                 margin-top: 5px;
+                @include mobile{
+                    height: #{'min(0.5rem, 20px)'};
+                }
             }
         }
     }
@@ -158,23 +198,39 @@ body{
     background-color: rgb(247, 247, 247);
     padding-top: #{'min(2rem, 80px)'};
     padding-bottom: #{'min(1.5rem, 60px)'};
+    @include mobile{
+        padding-top: $lh;
+        padding-bottom: $lh;
+    }
     .content.cnt01{
         @include grid('pc');
+        @include mobile{
+            @include grid('mob');
+        }
         header{
             .hdrTop{
                 width: 25%;
                 margin: 0 auto;
+                @include mobile{
+                    width: 55%;
+                }
                 h2{
                     text-align: center;
                     font-size: #{'min(1.6em, 16px)'};
                     line-height: $h;
                     text-transform: uppercase;
                     font-family: 'dutl';
+                    @include mobile{
+                        font-size: #{'min(1.4em, 14px)'};
+                    }
                     span{
                         font-size: $h2;
                         margin-left: #{'min(1.5em, 15px)'};
                         font-family: 'dut';
                         text-transform: capitalize;
+                        @include mobile{
+                            font-size: #{'min(1.9em, 19px)'};
+                        }
                     }
     
                 }
@@ -185,21 +241,44 @@ body{
                     height: 5px;
                     border-radius: 10px;
                     background-color: #ffff00;
+                    @include tablet{
+                        width: 100%;
+                    }
+                    @include mobile{
+                        display: block;
+                        width: $lh;
+                        height: $lh;
+                        margin-right: 3px;
+                        margin-left: auto;
+                        margin-top: -70px;
+                        background-color: #ffff00;
+                        border-radius: 50%;
+                    }
                 }
             }
             ul{
                 @include fl;
                 width: 50%;
                 margin: 0 auto;
+                @include mobile{
+                    width: 95%;
+                }
                 li{
                     font-size: $h4;
                     line-height: $lh;
                     margin-top: $plh;
                     font-family: 'xe';
+                    @include mobile{
+                        font-size: #{'min(1.2em, 12px)'};
+                    }
                     span{
                         font-family: 'dutl';
                         font-size: #{'min(1.7em, 17px)'};
                         margin-left: #{'min(1.5em, 15px)'};
+                        @include mobile{
+                            font-size: #{'min(1.4em, 14px)'};
+                            margin-left: #{'min(0.5em, 5px)'};
+                        }
                     }
                 }
             }
@@ -207,18 +286,38 @@ body{
         section{
             margin-top: #{'min(3rem, 120px)'};
             @include fl;
+            @include mobile{
+                display: block;
+                justify-content: left;
+                margin-top: #{'min(1.5rem, 60px)'};
+            }
             .artLeft{
                 width: calc(100% / 12 * 5.5);
+                @include mobile{
+                    width: 100%;
+                }
                 .artTop{
+                    @include mobile{
+                        width: 90%;
+                    }
+
                     h3{
                         font-size: $h3;
                         text-transform: uppercase;
                         font-family: 'dut';
                         line-height: $h;
+                        @include mobile{
+                            font-size: #{'min(1.6em, 16px)'};
+                            line-height: $lh;
+                            margin-top: $lh;
+                        }
                     }
                     .txtGr{
                         padding-left: $plh;
                         @include fl;
+                        @include mobile{
+                            padding-left: 3px;
+                        }
                         .txtLeft{
                             font-size: $h4;
                             line-height: $lh;
@@ -228,26 +327,45 @@ body{
                                     margin-top: $lh;
                                 }
                             }
+                            @include mobile{
+                                font-size: #{'min(1.3em, 13px)'};
+                            }
                         }
                         .txtRight{
                             font-size: $h4;
                             line-height: $lh;
                             font-family: 'light';
                             padding-right: #{'min(9.0em, 90px)'};
+                            @include mobile{
+                                padding-right: 25px;
+                                font-size: #{'min(1.3em, 13px)'};
+                            }
                         }
                     }
                 }
                 .artBtm{
                     margin-top: $plh;
+                    width: 90%;
+                    @include mobile{
+                        width: 100%;
+                    }
                     h3{
                         font-size: $h3;
                         text-transform: uppercase;
                         font-family: 'dut';
                         line-height: $h; 
+                        @include mobile{
+                            font-size: #{'min(1.6em, 16px)'};
+                            line-height: $lh;
+                            margin-top: $lh;
+                        }
                     }
                     .txtGr{
                         @include fl;
                         padding-left: $plh;
+                        @include mobile{
+                            padding-left: 3px;
+                        }
                         .txtLeft{
                             margin-top: #{'min(-1rem, -40px)'};
                             h4{
@@ -255,6 +373,9 @@ body{
                                 line-height: $lh;
                                 font-family: 'dutl';
                                 margin-top: $lh;
+                                @include mobile{
+                                    font-size: #{'min(1.3em, 13px)'};
+                                }
                             }
                         }
                         .txtRight{
@@ -264,10 +385,17 @@ body{
                                 line-height: $lh;
                                 font-family: 'light';
                                 margin-top: $plh;
+                                @include mobile{
+                                    font-size: #{'min(1.3em, 13px)'};
+                                }
                             }
                             h5{
                                 font-size: $p;
+                                font-family: 'light';
                                 line-height: $plh;
+                                @include mobile{
+                                    font-size: #{'min(1.3em, 13px)'};
+                                }
                             }
                         }
                     }
@@ -276,35 +404,60 @@ body{
             }
             .artRight{
                 width: calc(100% / 12 * 5);
+                @include mobile{
+                    width: 90%;
+                }
                 h3{
                     font-size: $h3;
                     text-transform: uppercase;
                     font-family: 'dut';
                     line-height: $h; 
+                    @include mobile{
+                        font-size: #{'min(1.6em, 16px)'};
+                        line-height: $lh;
+                        margin-top: $lh;
+                    }
                 }
                 .txtGr{
                     @include fl;
                     .txtLeft{
                         padding-left: $plh;
+                        @include mobile{
+                            padding-left: 3px;
+                        }
                         h4{
                             font-size: $h4;
                             line-height: $lh;
                             font-family: 'dutl';
                             &:nth-child(2){
-                                margin-top: #{'min(1.5rem, 60px)'};
+                                margin-top: #{'min(1rem, 40px)'};
+                            }
+                            @include mobile{
+                                font-size: #{'min(1.3em, 13px)'};
                             }
     
                         }
                     }
                     .txtRight{
+                        @include mobile{
+                            width: 64%;
+                        }
                         h4{
                             font-size: $h4;
                             font-family: 'light';
-                            margin-top: $plh;
+                            line-height: $lh;
+                            @include mobile{
+                                font-size: #{'min(1.3em, 13px)'};
+                                margin-top: 0px;
+                            }
                         }
                         h5{
                             font-size: $h4;
                             line-height: $lh;
+                            font-family: 'light';
+                            @include mobile{
+                                font-size: #{'min(1.3em, 13px)'};
+                            }
                         }
                     }
                 }
@@ -317,6 +470,9 @@ body{
                 background-size: contain;
                 height: $plh;
                 background-image: url('../images/arrow.png');
+                @include mobile{
+                    display: none
+                }
             }
         }
     }
@@ -329,20 +485,37 @@ body{
         @include grid('pc');
         padding-top: #{'min(2.5rem, 100px)'};
         padding-bottom: #{'min(1rem, 40px)'};
+        @include mobile{
+            @include grid('mob');
+            padding-top: 0px;
+        }
         header{
             h2{
                 font-size: $h2;
                 line-height: $lh;
                 text-transform: uppercase;
                 font-family: 'dut';
+                @include mobile{
+                    font-size: #{'min(1.6em, 16px)'};
+                    line-height: $lh;
+                    margin-top: $lh;
+                    text-align: center;
+                }
             }
         }
         section{
             margin-top: $h;
+            @include mobile{
+                margin-top: $lh;
+            }
             .artTop{
                 @include fl;
                 width: calc(100% / 12 * 8);
                 margin: 0 auto;
+                @include mobile{
+                    width: 100%;
+                    margin: 0 auto;
+                }
                 .article{
                     width: calc(100% / 3);
                     margin: 0 auto;
@@ -350,15 +523,9 @@ body{
                     svg{
                         width: 160px;
                         height: 160px;
-                        .bgcircle{
-                            fill: transparent;
-                            stroke: #ccc;
-                            stroke-width: 13;
-                            stroke-dasharray: 439;
-                            stroke-dashoffset: 439;
-                            transform-origin: 50%;
-                            transform: rotate(-90deg);
-                            stroke-linecap: round;
+                        @include mobile{
+                            width: 100px;
+                            height: 100px;
                         }
                         circle{
                             fill: transparent;
@@ -369,6 +536,14 @@ body{
                             transform-origin: 50%;
                             transform: rotate(-90deg);
                             stroke-linecap: round;
+                            @include mobile{
+                                stroke-width: 11;
+                                cx : 50;
+                                cy : 50;
+                                r : 40;
+                                stroke-dasharray: 245;
+                                stroke-dashoffset: 245;
+                            }
                         }
                     }
                     .texts{
@@ -378,7 +553,9 @@ body{
                             line-height: $lh;
                             margin-top: $plh;
                             font-family: 'dut';
-                            
+                            @include mobile{
+                                font-size: #{'min(1.4em, 14px)'};
+                            }
                         }
                         p{
                             width: 70%;
@@ -387,6 +564,9 @@ body{
                             line-height: $plh;
                             font-family: 'light';
                             text-align: center;
+                            @include mobile{
+                                font-size: #{'min(1.2em, 12px)'};
+                            }
                         }
                     }
 
@@ -395,10 +575,21 @@ body{
             .artBtm{
                 margin-top: $mt;
                 @include fl;
+                @include mobile{
+                    margin-top: $lh;
+                    display: block;
+                }
                 .artLeft{
                     width: calc(100% / 12 * 5.5);
+                    @include mobile{
+                        width: 95%;
+                        margin: 0 aut0;
+                    }
                     article{
                         margin-top: $plh;
+                        @include mobile{
+                           margin-top: 0px;
+                        }
                         cursor: pointer;
                         .texts{
                             h4{
@@ -406,6 +597,9 @@ body{
                                 line-height: $lh;
                                 font-family: 'dut';
                                 text-transform: capitalize;
+                                @include mobile{
+                                    font-size: #{'min(1.4em, 14px)'};
+                                }
                             }
                         }
                         .bars{
@@ -413,6 +607,9 @@ body{
                             height: #{'min(2.5em, 25px)'};
                             border-radius: #{'min(1rem, 10px)'};
                             background-color: #eee;
+                            @include mobile{
+                                height: #{'min(1.5em, 15px)'};
+                            }
                             .per{
                                 width: 0%;
                                 height: #{'min(2.5em, 25px)'};
@@ -422,14 +619,24 @@ body{
                                 &.color{
                                     background-color: #ffff00;
                                 }
+                                @include mobile{
+                                    height: #{'min(1.5em, 15px)'};
+                                }
                             }
                         }
                     }
                 }
                 .artRight{
                     width: calc(100% / 12 * 5.5);
+                    @include mobile{
+                        width: 95%;
+                        margin: 0 aut0;
+                    }
                     article{
                         margin-top: $plh;
+                        @include mobile{
+                            margin-top: 0px;
+                        }
                         cursor: pointer;
                         .texts{
                             h4{
@@ -437,6 +644,9 @@ body{
                                 line-height: $lh;
                                 font-family: 'dut';
                                 text-transform: capitalize;
+                                @include mobile{
+                                    font-size: #{'min(1.4em, 14px)'};
+                                }
                             }
                         }
                         .bars{
@@ -444,6 +654,9 @@ body{
                             height: #{'min(2.5em, 25px)'};
                             border-radius: #{'min(1rem, 10px)'};
                             background-color: #eee;
+                            @include mobile{
+                                height: #{'min(1.5em, 15px)'};
+                            }
                             .per{
                                 width: 0%;
                                 height: #{'min(2.5em, 25px)'};
@@ -452,6 +665,10 @@ body{
                                 transition: background-color 0.3s;
                                 &.color{
                                     background-color: #ffff00;
+                                }
+                                @include mobile{
+                                    height: #{'min(1.5em, 15px)'};
+
                                 }
                             }
                         }
@@ -467,6 +684,9 @@ body{
                 background-size: contain;
                 height: $plh;
                 background-image: url('../images/arrow.png');
+                @include mobile{
+                    display: none;
+                }
             }
         }
     }
@@ -479,49 +699,91 @@ body{
         @include grid('pc');
         padding-top: $mt;
         padding-bottom: $mt;
+        @include mobile{
+            @include grid('mob');
+            padding-top: $lh;
+            padding-bottom: $lh;
+        }
         header{
             h2{
                 font-size: $h2;
                 line-height: $lh;
                 text-transform: uppercase;
                 font-family: 'dut';
+                @include mobile{
+                    font-size: #{'min(1.6em, 16px)'};
+                    line-height: $lh;
+                    text-align: center;
+                }
             }
         }
         section{
             margin-top: #{'min(4rem, 160px)'};
             @include fl;
+            @include mobile{
+                margin-top: 0px;
+                display: block;
+            }
             article{
                 width: calc(100% / 3);
+                @include mobile{
+                    width: 80%;
+                    margin: 0 auto;
+                    margin-top: $lh;
+                }
                 .image{
                     @include bg;
                     background-image: url('../images/port01.png');
                     height: #{'min(4rem, 160px)'};
                     background-size: contain;
                 }
+                .image.i2{
+                    background-image: url('../images/port02.png');
+                }
+                .image.i3{
+                    background-image: url('../images/port02.png');
+                    filter: brightness(0.8);
+                }
                 .texts{
                     text-align: center;
                     margin-top: $lh;
+                    @include mobile{
+                        margin-top: $plh;
+                    }
                     h2{
                         font-size: #{'min(4.0em, 40px)'};
                         line-height: $lh;
                         color: #ccc;
                         font-family: 'dut';
+                        @include mobile{
+                            font-size: #{'min(3.5em, 35px)'};
+                        }
                     }
                     h3{
                         font-size: #{'min(2.0em, 20px)'};
                         line-height: $lh;
                         font-family: 'bold';
+                        @include mobile{
+                            font-size: #{'min(1.6em, 16px)'};
+                        }
                     }
                     h4{
                         font-size: $h4;
                         line-height: $plh;
                         font-family: 'dutl';
+                        @include mobile{
+                            font-size: #{'min(1.4em, 14px)'};
+                        }
                     }
                     h5{
                         font-size: $h4;
                         line-height: $lh;
                         margin-top: $lh;
                         font-family: 'dutl';
+                        @include mobile{
+                            font-size: #{'min(1.4em, 14px)'};
+                            margin-top: 0px;
+                        }
                     }
                     .btns{
                         @include fl;
@@ -543,6 +805,11 @@ body{
                                 border: 1px solid #ffff00;
 
                             }
+                            @include mobile{
+                                font-size: #{'min(1.4em, 14px)'};
+                                line-height: #{'min(0.75rem, 30px)'};
+                                height: #{'min(0.75rem, 30px)'};
+                            }
                         }
                     }
                 }
@@ -559,6 +826,11 @@ body{
         margin-top: $lh;
         padding-bottom: $lh;
         text-align: center;
+        @include mobile{
+            @include grid('mob');
+            margin-top: $plh;
+            padding-bottom: $plh;
+        }
         .image{
             cursor: pointer;
             @include bg;
@@ -581,6 +853,13 @@ body{
             text-align: center;
             font-family: 'dut';
             color: #666;
+            @include mobile{
+                width: #{'min(0.75rem, 30px)'};
+                height: #{'min(0.75rem, 30px)'};
+                bottom: $plh;
+                font-size: #{'min(1.2em, 12px)'};
+                line-height: #{'min(2.3em, 23px)'};
+            }
         }
     }
 }

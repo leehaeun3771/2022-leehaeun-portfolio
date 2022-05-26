@@ -53,6 +53,12 @@ $mt:#{'min(3rem, 120px)'};
     }
 }
 
+@mixin tablet{
+    @media (max-width:1024px) and (min-width:0px){
+        @content;         
+    }
+}
+
 
 html{
     font-size: 3vw;
@@ -62,7 +68,6 @@ html{
 
     body{
         position: relative;
-        height: #{'min(246rem, 9840px)'};
         font-size: 0.7vw;
         overflow-x: hidden;
         @include mobile{
@@ -72,9 +77,17 @@ html{
 }
 
 .Wrap{
-    width: 100%;
     height: 100%;
+    height: #{'min(246rem, 9840px)'};
+    @include tablet{
+        height: #{'min(170rem, 6800px)'};
+    }
+    @include mobile{
+        height: #{'min(60rem, 2400px)'};
+    }
     .image{
+        top: 0;
+        left: 0;
         @include bg;
         height: 100%;
         background-image: url('../images/portfolio/이하은_서소문포트폴리오.png');
@@ -83,13 +96,19 @@ html{
 }
 .btns{
     position: fixed;
-    bottom: #{'min(0.75rem, 30px)'};
+    bottom: #{'min(1.25rem, 50px)'};
     right: 100px;
     @include fl;
-    width: 7%;
+    width: 10%;
     z-index: 999;
+    @include tablet(){
+        right: 10px;
+    }
+    @include mobile{
+        right: 20px;
+        bottom: 10px;
+    }
     .btn{
-        width: calc(100% / 2 - 10px);
         cursor: pointer;
         width: #{'min(1.5rem, 60px)'};
         height: #{'min(1.5rem, 60px)'};
@@ -100,5 +119,19 @@ html{
         font-family: 'dut';
         color: #666;
         font-size: $h4;
+        @include tablet(){
+            width: #{'min(2rem, 80px)'};
+            height: #{'min(2rem, 80px)'};
+            background-color: #ccc;
+            line-height: #{'min(5.5em, 55px)'};
+            font-size: #{'min(2.0em, 20px)'};
+        }
+        @include mobile{
+            background-color: #ccc;
+            width: #{'min(3.5em, 35px)'};
+            height: #{'min(3.5em, 35px)'};
+            font-size: #{'min(1.2em, 12px)'};
+            line-height: #{'min(3.0em, 30px)'};
+        }
     }
 }
