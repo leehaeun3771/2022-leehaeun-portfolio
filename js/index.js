@@ -178,8 +178,8 @@ if(win >= 1025){
     //모바일 버전 컨텐츠2 툴 활용능력
 }else{
     //원형 1
-    $({per:0}).animate({per:93},{
-        duration : 2500,
+    $({per:93}).animate({per:93},{
+        duration : 2000,
         progress : function(){
             percent = 245 - ( ( 245 * this.per ) / 100 );
             $('.article.i1 svg circle').css('stroke-dashoffset', percent)
@@ -187,8 +187,8 @@ if(win >= 1025){
     })
 
     //원형2
-    $({per:0}).animate({per:90},{
-        duration : 2500,
+    $({per:90}).animate({per:90},{
+        duration : 2000,
         progress : function(){
             percent = 245 - ( ( 245 * this.per ) / 100 );
             $('.article.i2 svg circle').css('stroke-dashoffset', percent)
@@ -196,8 +196,8 @@ if(win >= 1025){
     })
 
     //원형3
-    $({per:0}).animate({per:75},{
-        duration : 2500,
+    $({per:75}).animate({per:75},{
+        duration : 2000,
         progress : function(){
             percent = 245 - ( ( 245 * this.per ) / 100 );
             $('.article.i3 svg circle').css('stroke-dashoffset', percent)
@@ -211,7 +211,7 @@ if(win >= 1025){
         var ss = $(this).attr('data-num');
 
         $({percent:0}).animate({percent : ss},{
-            duration : 2500,
+            duration : 2000,
             progress : function(){
                 var numm = parseInt(this.percent);
                 $('article .bars .per').eq(a).css({

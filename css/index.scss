@@ -90,12 +90,12 @@ body{
 
     main{
         @include grid('pc');
-        padding-top: #{'min(11rem, 440px)'};
+        padding-top: #{'min(10.5rem, 420px)'};
         padding-bottom: $h;
         @include mobile{
             @include grid('mob');
-            padding-top: #{'min(3rem, 120px)'};
-            padding-bottom: $lh;
+            padding-top: #{'min(8rem, 320px)'};
+            padding-bottom: #{'min(5rem, 200px)'};
         }
         .eventGr{
             h1{
@@ -152,7 +152,7 @@ body{
                 background-image: url('../images/click\ arrow.png');
                 background-size: contain;
                 @include mobile{
-                    height: #{'min(1.5rem, 60px)'};
+                    height: #{'min(3rem, 120px)'};
                     background-image: url('../images/click\ arrow\ mini.png');
                     background-size: contain;
                 }
@@ -176,6 +176,7 @@ body{
                 @include mobile{
                     height: #{'min(0.5rem, 20px)'};
                     width: #{'min(0.5rem, 20px)'};
+                    margin-top: $lh;
                 }
             }
             h5{
@@ -199,8 +200,8 @@ body{
     padding-top: #{'min(2rem, 80px)'};
     padding-bottom: #{'min(1.5rem, 60px)'};
     @include mobile{
-        padding-top: $lh;
-        padding-bottom: $lh;
+        padding-top: $h;
+        padding-bottom: $h;
     }
     .content.cnt01{
         @include grid('pc');
@@ -309,7 +310,7 @@ body{
                         @include mobile{
                             font-size: #{'min(1.6em, 16px)'};
                             line-height: $lh;
-                            margin-top: $lh;
+                            margin-top: $h;
                         }
                     }
                     .txtGr{
@@ -357,7 +358,7 @@ body{
                         @include mobile{
                             font-size: #{'min(1.6em, 16px)'};
                             line-height: $lh;
-                            margin-top: $lh;
+                            margin-top: $h;
                         }
                     }
                     .txtGr{
@@ -415,7 +416,7 @@ body{
                     @include mobile{
                         font-size: #{'min(1.6em, 16px)'};
                         line-height: $lh;
-                        margin-top: $lh;
+                        margin-top: $h;
                     }
                 }
                 .txtGr{
@@ -487,7 +488,8 @@ body{
         padding-bottom: #{'min(1rem, 40px)'};
         @include mobile{
             @include grid('mob');
-            padding-top: 0px;
+            padding-top: $lh;
+            padding-bottom: $h;
         }
         header{
             h2{
@@ -701,8 +703,8 @@ body{
         padding-bottom: $mt;
         @include mobile{
             @include grid('mob');
-            padding-top: $lh;
-            padding-bottom: $lh;
+            padding-top: $h;
+            padding-bottom: $h;
         }
         header{
             h2{
@@ -806,7 +808,7 @@ body{
 
                             }
                             @include mobile{
-                                font-size: #{'min(1.4em, 14px)'};
+                                font-size: #{'min(1.1em, 11px)'};
                                 line-height: #{'min(0.75rem, 30px)'};
                                 height: #{'min(0.75rem, 30px)'};
                             }
