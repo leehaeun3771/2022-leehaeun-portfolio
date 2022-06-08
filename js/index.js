@@ -221,6 +221,11 @@ if(win >= 1025){
         });
     });
 
+    //모바일 버전 알트3 안열림
+    $('.cntWrap.cnt03 section article').eq(2).find('.btn').eq(0).click(function(){
+        alert('PC로 확인부탁드립니다. 태블릿/모바일 버전 작업중.');
+    }); 
+
 };
 
 
@@ -281,7 +286,7 @@ if(win >= 1025){
 
 
     //프로젝트 페이지 (작업중 안내)
-    $('.cntWrap.cnt03 section article').eq(2).find('.btn').click(function(){
+    $('.cntWrap.cnt03 section article').eq(2).find('.btn').eq(1).click(function(){
         alert('작업중입니다.');
     }); 
 
