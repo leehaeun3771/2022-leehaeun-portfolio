@@ -223,7 +223,7 @@ if(win >= 1025){
 
     //모바일 버전 알트3 안열림
     $('.cntWrap.cnt03 section article').eq(2).find('.btn').eq(0).click(function(){
-        alert('PC로 확인부탁드립니다. 태블릿/모바일 버전 작업중.');
+        alert('PC로 확인 부탁드립니다. 모바일 / 태블릿 버전 작업중입니다.');
     }); 
 
 };

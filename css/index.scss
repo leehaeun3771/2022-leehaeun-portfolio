@@ -743,7 +743,7 @@ body{
                     background-image: url('../images/port02.png');
                 }
                 .image.i3{
-                    background-image: url('../images/port02.png');
+                    background-image: url('../images/port03.png');
                     filter: brightness(0.8);
                 }
                 .texts{
@@ -794,6 +794,7 @@ body{
                         margin-top: $plh;
                         .btn{
                             cursor: pointer;
+                            font-size: #{'min(1.3em, 13px)'};
                             width: calc(100% / 2 - 10px);
                             margin: 0 auto;
                             border: 1px solid lightgray;
